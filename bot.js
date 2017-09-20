@@ -1,57 +1,30 @@
 var Discord = require('discord.io');
-var logger = require('winston');
 var auth = require('./auth.json');
-// Configure logger settings
 
-logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console, {
-    colorize: true
-});
-logger.level = 'debug';
-// Initialize Discord Bot
 var bot = new Discord.Client({
    token: auth.token,
    autorun: true
 
 });
 
-bot.on('ready', function (evt) {
-	
-    logger.info('Connected');
-    logger.info('Logged in as: user');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+ 
+
+
+
+
+
+
+bot.on('ready', function() {
+    console.log('Logged in as %s - %s\n', bot.username, bot.id);
 });
 
 
 
-
-
-bot.on("message", function (user, userID, channelID, message, rawEvent)
-
-{
-    //http://www.w3schools.com/jsref/jsref_substring.asp
-    if (message.substring(0, 5) == "!set ") // if message starts with "!"
-    {
-        var command = message.substring(5); // store the command for cleaner code/reading
-        
-        if(command = command)
-        {
-          bot.on("ready", () => {
-    command;
+bot.on("any",function(ev){
+    bot.setPresence( {game: {name: "!commands" }});
 });
-           
-	
-        }
-    }
-});
-
-
-
-
-
-
-
-
 
 
 bot.on("message", function (user, userID, channelID, message, rawEvent)
@@ -74,12 +47,12 @@ scraperjs.StaticScraper.create('https://www.rucoyonline.com/highscores/' + comma
         bot.sendMessage({
                 to: channelID,
                 message: (news)
+				
+				
             });
     }) }
 	}
 });
-
-
 
 
 bot.on("message", function (user, userID, channelID, message, rawEvent)
@@ -98,24 +71,20 @@ const cheerioReq = require("cheerio-req");
 cheerioReq("https://www.rucoyonline.com/characters?name=" + command, (err, $) => {
     bot.sendMessage({
                 to: channelID,
-                message: ($("div.table-responsive").text())
+               
+				embed: {
+			color: 0x642EFE,		
+          description: ($("div.table-responsive tr").text())
+                  
+     }
             });
     // => Ionic? Biz?u
 	});}
 
 
 
-
-
-
-
-
 	}
 });
-
-
-
-
 
 
 
@@ -129,23 +98,42 @@ bot.on("message", function (user, userID, channelID, message, rawEvent)
         if(command == "commands")
         {
             //https://izy521.gitbooks.io/discord-io/content/Methods/Channels.html
-            bot.sendMessage({
-                to: channelID,
-                message: "!c 'character name'   !top experience !top melee !top magic !top distance !top defense"
-            });
+               bot.sendMessage({
+     to: channelID,
+     embed: {
+          title: "Commands",
+          description: "!c 'character name'\n!exodus\n!top experience\n!top melee\n!top magic\n!top distance\n!top defense",
+          color: 0x642EFE,
+          
+     }
+});
         }
     }
 });
 
 
+bot.on("message", function (user, userID, channelID, message, rawEvent)
+{
+    //http://www.w3schools.com/jsref/jsref_substring.asp
+    if (message.substring(0, 1) == "!") // if message starts with "!"
+    {
+        var command = message.substring(1); // store the command for cleaner code/reading
 
-
-
-
-
-
-
-
+        if(command == "exodus")
+        {
+            //https://izy521.gitbooks.io/discord-io/content/Methods/Channels.html
+               bot.sendMessage({
+     to: channelID,
+     embed: {
+          title: "Exodus",
+          description: "Exo Clorox\nExo Acerbic\nExo Leopead\nExo Thor\nExo Aenima\nExo Alchemy\nExo Ardivan\nExo Articorz\nExo Aw\nExo Beast\nExo Box\nExo Bully\nExo Butcher\nExo Death\nExo Deus\nExo Frieza\nExo Lady Jenn\nExo Mamba\nExo Materia\nExo Merrow\nExo Ninja\nExo Notorious\nExo Ray\nExo Saiyan\nExo Satan\nExo Serpico\nExo Sleet\nExo Size\nExo Ss Dwarf\nExo Tanner\nExo Vega\nExo Yoga Flames\nExo Yuri\nExo Godd\nExodus Eligius",
+          color: 0x642EFE,
+          
+     }
+});
+        }
+    }
+});
 
 
 

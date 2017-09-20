@@ -1,17 +1,49 @@
 {
-  "name": "bot",
-  "version": "1.0.0",
-  "description": "My own Discord bot",
-  "main": "bot.js",
-  "author": "art",
-  "dependencies": {
-    "discord.io": "^2.5.2",
-    "discord.js": "^11.2.1",
-    "winston": "^2.3.1"
-  }
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello-openshift",
+    "creationTimestamp": null,
+    "labels": {
+      "name": "hello-openshift"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "hello-openshift",
+        "image": "openshift/hello-openshift",
+        "ports": [
+          {
+            "containerPort": 8080,
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {},
+        "volumeMounts": [
+          {
+            "name":"tmp",
+            "mountPath":"/tmp"
+          }
+        ],
+        "terminationMessagePath": "/dev/termination-log",
+        "imagePullPolicy": "IfNotPresent",
+        "capabilities": {},
+        "securityContext": {
+          "capabilities": {},
+          "privileged": false
+        }
+      }
+    ],
+    "volumes": [
+      {
+        "name":"tmp",
+        "emptyDir": {}
+      }
+    ],
+    "restartPolicy": "Always",
+    "dnsPolicy": "ClusterFirst",
+    "serviceAccount": ""
+  },
+  "status": {}
 }
-
-"scripts": {
-  "start": "node bot.js"
-},
-"main": "node.js"

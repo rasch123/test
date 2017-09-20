@@ -1,11 +1,3 @@
-{
-  "name": "bot",
-  "version": "1.0.0",
-  "description": "My own Discord bot",
-  "main": "bot.js",
-  "author": "art",
-  "dependencies": {
-    "discord.io": "^2.5.2",
-    "winston": "^2.3.1"
-  }
+"scripts": {
+    "start": "node bot.js --websocket-port=$OPENSHIFT_NODEJS_PORT --log-level=1"
 }

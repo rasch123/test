@@ -1,17 +1,12 @@
 {
-  "name": "bot",
-  "version": "1.0.0",
-  "description": "My own Discord bot",
-  "main": "bot.js",
-  "author": "art",
-  "dependencies": {
-    "discord.io": "^2.5.2",
-    "discord.js": "^11.2.1",
-    "winston": "^2.3.1"
-  }
-}
-
+"name": "trials-bot",
+"version": "1.0.0",
+"description": "Trials of Osiris Discrod Bot",
+"main": "bot.js",
 "scripts": {
-  "start": "node bot.js"
+"start": "node bot.js",
+"test": "echo \"Error: no test specified\" && exit 1"
 },
-"main": "node.js"
+"keywords": [],
+...
+}

@@ -1,3 +1,20 @@
+
+
+var express = require('express');
+var app     = express();
+
+app.set('port', (process.env.PORT || 5000));
+
+//For avoidong Heroku $PORT error
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
+
+
+
 var Discord = require('discord.io');
 var auth = require('./auth.json');
 
@@ -136,10 +153,11 @@ bot.on("message", function (user, userID, channelID, message, rawEvent)
 
 
 
-
-
-
-
+//keep alive
+var http = require("http");
+setInterval(function() {
+    http.get("http://obscure-oasis-76877.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 
 
 

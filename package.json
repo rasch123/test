@@ -1,12 +1,21 @@
 {
-"name": "trials-bot",
-"version": "1.0.0",
-"description": "Trials of Osiris Discrod Bot",
-"main": "bot.js",
-"scripts": {
-"start": "node bot.js",
-"test": "echo \"Error: no test specified\" && exit 1"
-},
-"keywords": [],
-...
+  "name": "picktwobot",
+  "version": "3.10.10",
+  "description": "A Twitter bot that reminds you that you can't have everything.",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "cheerio-req": "^1.1.6",
+    "discord.io": "^2.5.2",
+    "discord.js": "^11.2.1",
+    "express": "^4.15.4",
+    "lodash": "^2.4.1",
+    "node-rest-client": "^1.4.1",
+    "scraperjs": "^1.2.0",
+    "twit": "^1.1.18",
+    "wordfilter": "^0.1.7"
+  }
 }

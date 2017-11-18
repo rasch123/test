@@ -116,7 +116,7 @@ bot.on("message", function (user, userID, channelID, message, rawEvent)
      to: channelID,
      embed: {
           title: "Commands",
-          description: "!c 'character name'\n!exodus\n!top experience\n!top melee\n!top magic\n!top distance\n!top defense",
+          description: "!c 'character name'\n!top experience\n!top melee\n!top magic\n!top distance\n!top defense",
           color: 0x642EFE,
           
      }

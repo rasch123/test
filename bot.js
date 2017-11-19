@@ -116,7 +116,7 @@ bot.on("message", function (user, userID, channelID, message, rawEvent)
      to: channelID,
      embed: {
           title: "Commands",
-          description: "!c 'character name'\n!top experience\n!top melee\n!top magic\n!top distance\n!top defense",
+          description: "!c 'character name'\n!online\n!top experience\n!top melee\n!top magic\n!top distance\n!top defense",
           color: 0x642EFE,
           
      }
@@ -151,7 +151,36 @@ bot.on("message", function (user, userID, channelID, message, rawEvent)
 
 
 
+//online
+bot.on("message", function (user, userID, channelID, message, rawEvent)
+{
+    //http://www.w3schools.com/jsref/jsref_substring.asp
+    if (message.substring(0, 1) == "!") // if message starts with "!"
+    {
+        var command = message.substring(1); // store the command for cleaner code/reading
 
+        if(command == "online")
+        {
+  
+  const cheerioReq = require("cheerio-req");
+
+cheerioReq("https://www.rucoyonline.com", (err, $) => {
+    bot.sendMessage({
+                to: channelID,
+               
+				embed: {
+			color: 0x642EFE,		
+          description: ($("body > div > div > div > div:nth-child(4) > div > div.text-center > p:nth-child(3)").text())
+                  
+     }
+            });
+    // => Ionic? Biz?u
+	});
+  
+  
+        }
+    }
+});
 
 
 

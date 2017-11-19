@@ -153,11 +153,7 @@ bot.on("message", function (user, userID, channelID, message, rawEvent)
 
 
 
-//keep alive
-var http = require("http");
-setInterval(function() {
-    http.get("http://obscure-oasis-76877.herokuapp.com");
-}, 300000); // every 5 minutes (300000)
+
 
 
 

@@ -40,7 +40,7 @@ bot.on("any",function(ev){
     bot.setPresence( {game: {name: "!commands" }});
 });
 
-
+//top
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
     //http://www.w3schools.com/jsref/jsref_substring.asp
@@ -68,7 +68,7 @@ scraperjs.StaticScraper.create('https://www.rucoyonline.com/highscores/' + comma
 	}
 });
 
-
+//kasutaja
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
     //http://www.w3schools.com/jsref/jsref_substring.asp
@@ -88,7 +88,11 @@ cheerioReq("https://www.rucoyonline.com/characters?name=" + command, (err, $) =>
                
 				embed: {
 			color: 0x642EFE,		
-          description: ($("div.table-responsive tr").text())
+          description: ($("div.table-responsive tr").text()),
+		  thumbnail:
+    {
+      url: 'https://www.upload.ee/thumb/7679514/knight.png'
+    },
                   
      }
             });
@@ -101,7 +105,7 @@ cheerioReq("https://www.rucoyonline.com/characters?name=" + command, (err, $) =>
 });
 
 
-
+//commands
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
     //http://www.w3schools.com/jsref/jsref_substring.asp
@@ -125,7 +129,7 @@ bot.on("message", function (user, userID, channelID, message, rawEvent)
     }
 });
 
-
+//exodus members
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
     //http://www.w3schools.com/jsref/jsref_substring.asp

@@ -177,7 +177,62 @@ cheerioReq("https://www.rucoyonline.com", (err, $) => {
     }
 });
 
+//play
+var fs = require('fs');
+var voiceChannelID = "356496696282447883";
+var izy = "66186356581208064";
+bot.on("message", function (user, userID, channelID, message, rawEvent)
+{
+    //http://www.w3schools.com/jsref/jsref_substring.asp
+    if (message.substring(0, 1) == "!") // if message starts with "!"
+    {
+        var command = message.substring(1); // store the command for cleaner code/reading
 
+        if(command == "play")
+        {
+  
+bot.joinVoiceChannel(voiceChannelID, function(error, events) {
+  //Check to see if any errors happen while joining.
+  if (error) return console.error(error);
+
+  //Then get the audio context
+  bot.getAudioContext(voiceChannelID, function(error, stream) {
+    //Once again, check to see if any errors exist
+    if (error) return console.error(error);
+
+    //Create a stream to your file and pipe it to the stream
+    //Without {end: false}, it would close up the stream, so make sure to include that.
+    fs.createReadStream('https://www.youtube.com/watch?v=GXTn4okvZ94').pipe(stream, {end: false});
+
+    //The stream fires `done` when it's got nothing else to send to Discord.
+    stream.on('done', function() {
+       //Handle
+    });
+  });
+});
+  
+   
+        }
+    }
+});
+
+//leave
+bot.on("message", function (user, userID, channelID, message, rawEvent)
+{
+    //http://www.w3schools.com/jsref/jsref_substring.asp
+    if (message.substring(0, 1) == "!") // if message starts with "!"
+    {
+        var command = message.substring(1); // store the command for cleaner code/reading
+
+        if(command == "stop")
+        {
+  
+bot.leaveVoiceChannel(voiceChannelID);
+  
+   
+        }
+    }
+});
 
 
 

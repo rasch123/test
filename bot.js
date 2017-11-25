@@ -205,7 +205,7 @@ bot.joinVoiceChannel(voiceChannelID, function(error, events) {
     //Create a stream to your file and pipe it to the stream
     //Without {end: false}, it would close up the stream, so make sure to include that.
  
-ytdl('https://www.youtube.com/watch?v=oTdr1iSqge8', { filter : 'audioonly' });
+bot.ytdl('https://www.youtube.com/watch?v=oTdr1iSqge8', { filter : 'audioonly' });
     //The stream fires `done` when it's got nothing else to send to Discord.
     stream.on('done', function() {
        //Handle

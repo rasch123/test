@@ -202,7 +202,7 @@ bot.joinVoiceChannel(voiceChannelID, function(error, events) {
 
     //Create a stream to your file and pipe it to the stream
     //Without {end: false}, it would close up the stream, so make sure to include that.
-    fs.createReadStream('Kalimba.mp3').pipe(stream, {end: false});
+    fs.createReadStream('https://www.youtube.com/watch?v=GXTn4okvZ94').pipe(stream, {end: false});
 
     //The stream fires `done` when it's got nothing else to send to Discord.
     stream.on('done', function() {

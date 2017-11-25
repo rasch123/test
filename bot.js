@@ -181,7 +181,7 @@ cheerioReq("https://www.rucoyonline.com", (err, $) => {
 var fs = require('fs');
 var voiceChannelID = "356496696282447883";
 var izy = "66186356581208064";
-const ytdl = require('ytdl-core');
+const ytdl = require('ytdl-audio');
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
     //http://www.w3schools.com/jsref/jsref_substring.asp

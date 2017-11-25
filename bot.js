@@ -182,6 +182,7 @@ var fs = require('fs');
 var voiceChannelID = "356496696282447883";
 var izy = "66186356581208064";
 const ytdl = require('ytdl-core');
+var video = "https://www.youtube.com/watch?v=oTdr1iSqge8"
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
     //http://www.w3schools.com/jsref/jsref_substring.asp
@@ -203,7 +204,7 @@ bot.joinVoiceChannel(voiceChannelID, function(error, events) {
 
     //Create a stream to your file and pipe it to the stream
     //Without {end: false}, it would close up the stream, so make sure to include that.
-   bot.voiceConnection.playRawStream(ytdl('https://www.youtube.com/watch?v=oTdr1iSqge8', {filter: 'audioonly'})); //Note: video is only a YouTube url
+   bot.voiceConnection.playRawStream(ytdl(video, {filter: 'audioonly'})); //Note: video is only a YouTube url
 
     //The stream fires `done` when it's got nothing else to send to Discord.
     stream.on('done', function() {

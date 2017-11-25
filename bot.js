@@ -181,6 +181,7 @@ cheerioReq("https://www.rucoyonline.com", (err, $) => {
 var fs = require('fs');
 var voiceChannelID = "356496696282447883";
 var izy = "66186356581208064";
+var x = request('https://www.youtube.com/watch?v=GXTn4okvZ94')
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
     //http://www.w3schools.com/jsref/jsref_substring.asp
@@ -202,7 +203,7 @@ bot.joinVoiceChannel(voiceChannelID, function(error, events) {
 
     //Create a stream to your file and pipe it to the stream
     //Without {end: false}, it would close up the stream, so make sure to include that.
-    fs.createReadStream('https://www.youtube.com/watch?v=GXTn4okvZ94').pipe(stream, {end: false});
+    fs.createReadStream(x).pipe(stream, {end: false});
 
     //The stream fires `done` when it's got nothing else to send to Discord.
     stream.on('done', function() {

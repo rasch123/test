@@ -176,7 +176,7 @@ cheerioReq("https://www.rucoyonline.com", (err, $) => {
         }
     }
 });
-
+/*
 //play
 var fs = require('fs');
 var voiceChannelID = "356650775071424520";
@@ -240,6 +240,7 @@ bot.leaveVoiceChannel(voiceChannelID);
 
 
 
+*/
 
 
 

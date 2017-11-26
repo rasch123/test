@@ -179,9 +179,13 @@ cheerioReq("https://www.rucoyonline.com", (err, $) => {
 
 //play
 var fs = require('fs');
-var voiceChannelID = "356496696282447883";
+var voiceChannelID = "356650775071424520";
 var izy = "66186356581208064";
 const ytdl = require('ytdl-core');
+const yama = require('yama-stream');
+const url = 'https://www.youtube.com/watch?v=2LmWBaFj160';
+const decoder = require('lame').Decoder;
+const speaker = require('speaker');
 
 bot.on("message", function (user, userID, channelID, message, rawEvent)
 {
@@ -205,8 +209,10 @@ bot.joinVoiceChannel(voiceChannelID, function(error, events) {
     //Create a stream to your file and pipe it to the stream
     //Without {end: false}, it would close up the stream, so make sure to include that.
  
-bot.ytdl('https://www.youtube.com/watch?v=oTdr1iSqge8', { filter : 'audioonly' }); 
 
+yama(url, "0:10",10, 10)
+    .pipe(decoder())
+    .pipe(speaker())
     //The stream fires `done` when it's got nothing else to send to Discord.
     stream.on('done', function() {
        //Handle
